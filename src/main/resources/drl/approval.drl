@@ -1,0 +1,8 @@
+import org.test.model.Applicant
+
+rule "Approve Good Credit"
+  when
+    a: Applicant(creditScore > 600)
+  then
+    a.setApproved(true);
+end

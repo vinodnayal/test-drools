@@ -1,0 +1,8 @@
+import com.entity.EmployeeStage
+
+rule "Approve Good Credit"
+  when
+    a: EmployeeStage(salary > 12000)
+  then
+    a.setApproved(true);
+end

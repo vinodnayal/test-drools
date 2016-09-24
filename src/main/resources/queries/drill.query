@@ -1,0 +1,18 @@
+
+create table vinod_test_json as
+select phones.phone.citycode as citycode ,phones.phone.longFreeText as address from (
+select flatten(pnr.PhoneNumbers.PhoneNumber) as phone FROM dfs.`/Users/vinod/projects_fork/data/pnrs/` pnr where pnr.recordLocator='1BZQCA') phones;
+
+select phones.phone.citycode as citycode ,phones.phone.longFreeText as address from (
+select flatten(pnr.PhoneNumbers.PhoneNumber) as phone FROM dfs.`/Users/vinod/projects_fork/data/pnrs/` pnr where pnr.recordLocator='1BZQCA') phones;
+
+
+select city.*,pnr.PhoneNumbers.PhoneNumber.cityCode as city,
+pnr.PhoneNumbers.PhoneNumber.longFreeText   AS address
+FROM dfs.`/Users/vinod/projects_fork/data/pnrs/` pnr
+join
+dfs.`/Users/vinod/projects_fork/data/city.json` city
+on pnr.PhoneNumbers.PhoneNumber.cityCode = city.citycode
+;
+
+
